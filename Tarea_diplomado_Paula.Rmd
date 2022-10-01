@@ -28,9 +28,21 @@ Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
 ## Including Plots
 
 ```{r}
+library(stats)
+library(graphics)
+library(psych)
+library(readxl)
+library(agridat)
+library(ggplot2)
 
 ```
 
+```{r}
+summary(Datos_Proyecto)
+```
+```{r}
+ggplot(Datos_Proyecto, aes())
+```
 
 You can also embed plots, for example:
 
