@@ -9,12 +9,28 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Summary
 
 ```{r cars}
 summary(cars)
 ```
 
+Variables categorias Seasonal, time, hours  y replicate asigna factor  
+
+```{r}
+Datos_Proyecto$Sesonal <- as.factor(Datos_Proyecto$Sesonal)
+Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
+Datos_Proyecto$hours <- as.factor(Datos_Proyecto$hours)
+Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
+```
+
+
 ## Including Plots
+
+```{r}
+
+```
+
 
 You can also embed plots, for example:
 
