@@ -9,21 +9,29 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Summary
+## Summary
 
 ```{r cars}
 summary(cars)
 ```
 
-Variables categorias Seasonal, time, hours  y replicate asigna factor  
+## Variables categorias Seasonal, time, hours  y replicate asigna factor  
 
 ```{r}
-Datos_Proyecto$Sesonal <- as.factor(Datos_Proyecto$Sesonal)
+Datos_Proyecto <- read_excel("Datos_Proyecto.xlsx")
+summary(Datos_Proyecto)
+
+```
+
+## Transforma variables a factores
+
+```{r}
+Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
 Datos_Proyecto$hours <- as.factor(Datos_Proyecto$hours)
 Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
+summary(Datos_Proyecto)
 ```
-
 
 ## Including Plots
 
@@ -34,15 +42,29 @@ library(psych)
 library(readxl)
 library(agridat)
 library(ggplot2)
-
 ```
 
+# Histogramas
+
 ```{r}
-summary(Datos_Proyecto)
+ggplot(Datos_Proyecto, aes(Chla)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Chlc)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Car)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(PC)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(DPPH)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(C)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(N)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Ratio)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Nitrato)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Fosfato)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Temperature)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(pH)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(Salinity)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(PAR)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(UVA)) + geom_histogram()
+ggplot(Datos_Proyecto, aes(UVB)) + geom_histogram()
 ```
-```{r}
-ggplot(Datos_Proyecto, aes())
-```
+
 
 You can also embed plots, for example:
 
