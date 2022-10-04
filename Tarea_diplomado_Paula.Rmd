@@ -1,7 +1,7 @@
 ---
-title: "Tarea1_diplomado_Paula"
+title: "Tarea_diplomado_Paula"
 author: "Paula Celis Plá"
-date: "2022-09-27"
+date: "2022-10-04"
 output:
   html_document: default
   pdf_document: default
@@ -24,12 +24,12 @@ library(dplyr)
 
 ## Descripción del Trabajo
 
-# Este estudio tiene por objetivo, evaluar la diferencias estadísticas de las variables fisiológicas y variables ambientales respecto a la variable categórica estación del Año con 4 niveles; Autumn, Winter, Spring y Summer, la variable tiempo (expresada en días) con 3 niveles; dia 1, dia 2 y dia 3, y la variable Replica con 9 valores. 
+## Este estudio tiene por objetivo, evaluar la diferencias estadísticas de las variables fisiológicas y variables ambientales respecto a la variable categórica estación del Año con 4 niveles; Autumn, Winter, Spring y Summer, la variable tiempo (expresada en días) con 3 niveles; dia 1, dia 2 y dia 3, y la variable Replica con 9 valores. 
 
-# Las variables fisológicas analizadas en este estudio fueron Clorofila a o Cla (expresada en microgramos * gramos-1 de peso seco), Clorofila c = Clc (expresada en microgramos * gramos-1 de peso seco), Carotenos o Car (expresada en microgramos * gramos-1 de peso seco), Compuestos fenólicos o PC (expresada en miligramos * gramos-1 de peso seco), Actividad antioxidante o DPPH = actividad antioxidante (expresada en micromol de unidades de trolox * gramos-1 de peso seco), y las variables ambientales; temperatura (expresada en °C), pH (expresada en unidades de pH), Salinidad (expresada en psu) y Radiación fotosinteticamente activa o PAR (expresada en micromoles de fotones * m-2 * s-1), con un total de 108 observaciones.  
+## Las variables fisológicas analizadas en este estudio fueron Clorofila a o Cla (expresada en microgramos * gramos-1 de peso seco), Clorofila c = Clc (expresada en microgramos * gramos-1 de peso seco), Carotenos o Car (expresada en microgramos * gramos-1 de peso seco), Compuestos fenólicos o PC (expresada en miligramos * gramos-1 de peso seco), Actividad antioxidante o DPPH = actividad antioxidante (expresada en micromol de unidades de trolox * gramos-1 de peso seco), y las variables ambientales; temperatura (expresada en °C), pH (expresada en unidades de pH), Salinidad (expresada en psu) y Radiación fotosinteticamente activa o PAR (expresada en micromoles de fotones * m-2 * s-1), con un total de 108 observaciones.  
 
 ## Variables categóricas Seasons, time y replicate asigna factor 
-# Transforma variables a factores
+## Transforma variables a factores
 
 ```{r}
 Datos_Proyecto <- read_excel("Datos_Proyecto.xlsx")
@@ -148,20 +148,10 @@ Datos_tab2
 ## 8. Utiliza Paquetes para importar datos a R como readxl o similar y paquetes tidyr, dplyr, ggplot2
 
 ```{r}
-Datos_Proyecto2 <- read_excel("Datos_Proyecto2.xlsx" , sheet= 1)
-summary(Datos_Proyecto2)
-messy <- read_excel("Datos_Proyecto2.xlsx")
+messy <- read_excel("Datos_Proyecto.xlsx")
 summary(messy)
 ```
 
 
 
 ```
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
