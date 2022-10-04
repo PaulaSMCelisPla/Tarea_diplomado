@@ -1,5 +1,5 @@
 ---
-title: "Tarea_diplomado_Paula"
+title: "Tarea1_diplomado_Paula"
 author: "Paula Celis Plá"
 date: "2022-09-27"
 output:
@@ -9,32 +9,32 @@ output:
 
 ## Habilita Librerias 
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 library(stats)
 library(graphics)
 library(psych)
 library(readxl)
 library(agridat)
 library(ggplot2)
+library(tidyr)
+library(dplyr)
 ```
 
-## Summary
+## Descripción del Trabajo
 
-```{r cars}
-summary(cars)
-```
+# Este estudio tiene por objetivo, evaluar la diferencias estadísticas de las variables fisiológicas y variables ambientales respecto a la variable categórica estación del Año con 4 niveles; Autumn, Winter, Spring y Summer, la variable tiempo (expresada en días) con 3 niveles; dia 1, dia 2 y dia 3, y la variable Replica con 9 valores. 
 
-## Variables categoricas Seasons, time, hours  y replicate asigna factor  
+# Las variables fisológicas analizadas en este estudio fueron Clorofila a o Cla (expresada en microgramos * gramos-1 de peso seco), Clorofila c = Clc (expresada en microgramos * gramos-1 de peso seco), Carotenos o Car (expresada en microgramos * gramos-1 de peso seco), Compuestos fenólicos o PC (expresada en miligramos * gramos-1 de peso seco), Actividad antioxidante o DPPH = actividad antioxidante (expresada en micromol de unidades de trolox * gramos-1 de peso seco), y las variables ambientales; temperatura (expresada en °C), pH (expresada en unidades de pH), Salinidad (expresada en psu) y Radiación fotosinteticamente activa o PAR (expresada en micromoles de fotones * m-2 * s-1), con un total de 108 observaciones.  
+
+## Variables categóricas Seasons, time y replicate asigna factor 
+# Transforma variables a factores
 
 ```{r}
 Datos_Proyecto <- read_excel("Datos_Proyecto.xlsx")
 summary(Datos_Proyecto)
-```
 
-## Transforma variables a factores
-
-```{r}
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
 Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
@@ -42,67 +42,30 @@ Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
 summary(Datos_Proyecto)
 ```
 
-## Including Plots
-
-## 3. Histogramas con etiquetas y títulos
+## Histogramas con etiquetas y títulos
 
 ```{r}
-ggplot(Datos_Proyecto, aes(Chla)) + geom_histogram()+ labs(title="Histograma Chla", x="Clorofila a", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Chlc)) + geom_histogram()+ labs(title="Histograma Clorofila c", x="Chlc", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Car)) + geom_histogram()+ labs(title="Histograma Carotenos", x="Car", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(PC)) + geom_histogram()+ labs(title="Histograma Compuestos fenólicos", x="PC", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(DPPH)) + geom_histogram()+ labs(title="Histograma DPPH", x="DPPH", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Temperature)) + geom_histogram()+ labs(title="Histograma Tempertura", x="Temperature", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(pH)) + geom_histogram()+ labs(title="Histograma pH", x="pH", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Salinity)) + geom_histogram()+ labs(title="Histograma Salinity", x="Salinity", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(PAR)) + geom_histogram()+ labs(title="Histograma Radiación fotosintéticamnete activa", x="PAR", y="Frecuencia")
+p1 <- ggplot(Datos_Proyecto, aes(Chla)) + geom_histogram(bins = 8, color ="blue", fill="blue")+ labs(title="Histograma de Clorofila a", x="Clorofila a", y="Frecuencia") 
+
+p2 <- ggplot(Datos_Proyecto, aes(Chlc)) + geom_histogram(bins = 8, color ="red", fill="red")+ labs(title="Histograma de Clorofila c", x="Clorofila c", y="Frecuencia")
+p3 <- ggplot(Datos_Proyecto, aes(Car)) + geom_histogram(bins = 8, color ="green", fill="green")+ labs(title="Histograma de Carotenos", x="Carotenos", y="Frecuencia")
+p4 <- ggplot(Datos_Proyecto, aes(PC)) + geom_histogram(bins = 8, color ="yellow", fill="yellow")+ labs(title="Histograma de Compuestos fenólicos", x="Compuestos fenólicos", y="Frecuencia")
+p5 <- ggplot(Datos_Proyecto, aes(DPPH)) + geom_histogram(bins = 8, color ="brown", fill="brown")+ labs(title="Histograma de actividad antioxidante", x="Actividad antioxidante", y="Frecuencia")
+p6 <- ggplot(Datos_Proyecto, aes(Temperature)) + geom_histogram(bins = 8, color ="pink", fill="pink")+ labs(title="Histograma de Temperatura", x="Temperature", y="Frecuencia")
+p7 <- ggplot(Datos_Proyecto, aes(pH)) + geom_histogram(bins = 8, color ="blue", fill="blue")+ labs(title="Histograma de pH", x="pH", y="Frecuencia")
+p8 <- ggplot(Datos_Proyecto, aes(Salinity)) + geom_histogram(bins = 8, color ="red", fill="red")+ labs(title="Histograma de Salinidad", x="Salinidad", y="Frecuencia")
+p9 <- ggplot(Datos_Proyecto, aes(PAR)) + geom_histogram(bins = 8, color ="green", fill="green")+ labs(title="Histograma de Radiación PAR", x="PAR", y="Frecuencia")
+
+gridExtra::grid.arrange(p1, p2, p3, p4, p5, ncol = 2)
+gridExtra::grid.arrange(p6, p7, p8, p9, ncol = 2)
 ```
 
 ## 4. Datos balanceados y tablas de frecuencia
 
 ```{r}
 str(Datos_Proyecto)
-Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
-Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
-Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
-summary(Datos_Proyecto)
 
-Datos_Proyecto$Chla
-tableChla <-as.data.frame(table(Chla = Datos_Proyecto$Chla))
-tableChla
-
-Datos_Proyecto$Chlc
-tableChlc <-as.data.frame(table(Chlc = Datos_Proyecto$Chlc))
-tableChlc
-
-Datos_Proyecto$Car
-tableCar <-as.data.frame(table(Car = Datos_Proyecto$Car))
-tableCar
-
-Datos_Proyecto$PC
-tablePC <-as.data.frame(table(PC = Datos_Proyecto$PC))
-tablePC
-
-Datos_Proyecto$DPPH
-tableDPPH <-as.data.frame(table(DPPH = Datos_Proyecto$DPPH))
-tableDPPH
-
-Datos_Proyecto$Temperature
-tableTemp <-as.data.frame(table(Temperature = Datos_Proyecto$Temperature))
-tableTemp
-
-Datos_Proyecto$pH
-tablepH <-as.data.frame(table(pH = Datos_Proyecto$pH))
-tablepH
-
-Datos_Proyecto$Salinity
-tableSalinity <-as.data.frame(table(Salinity = Datos_Proyecto$Salinity))
-tableSalinity
-
-Datos_Proyecto$PAR
-tablePAR <-as.data.frame(table(PAR = Datos_Proyecto$PAR))
-tablePAR
-
+knitr::kable(table(Datos_Proyecto$Seasons, Datos_Proyecto$time))
 ```
 
 
@@ -133,7 +96,6 @@ pairs.panels(Datos_Proyecto[,9:12], method = "pearson", hist.col = "blue", densi
 
 ## 5. Relación entre variables continuas y factores (boxplot)
 
-
 ```{r}
 ggplot(Datos_Proyecto, aes(x= Seasons, y=Chla))+geom_boxplot(fill="olivedrab1")+labs(title = "BoxPlot", x= "Seasons", y= "Clorofila a")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=Chlc))+geom_boxplot(fill="red")+labs(title = "BoxPlot", x= "Seasons", y= "Clorofila c")
@@ -158,46 +120,32 @@ Variable PAR: 1 en autumn, 1 en spring y 1 en summer
 
 ## 7. Resumen de los datos con tablas y estadística descriptiva 
 
-## Habilita librerias 
-
-```{r}
-library(readxl)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
-```
 
 ```{r}
 Datos_Proyecto <- read_excel("Datos_Proyecto.xlsx" , sheet= 1)
 head(Datos_Proyecto)
-Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
-Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
-Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
-
 select(Datos_Proyecto, Chla, Chlc, Car, DPPH)
 
 ```
+
 ```{r}
 Datos_tab <- Datos_Proyecto %>% group_by(Seasons) %>% summarize(n = n(), 
 Promedio_Chla = mean(Chla), Maximo_Chla = max(Chla), Promedio_Chlc = mean(Chlc), Maximo_Chlc = max(Chlc), Promedio_Car = mean(Car), Maximo_Car = max(Car), Promedio_PC = mean(PC), Maximo_PC = max(PC), Promedio_DPPH = mean(DPPH), Maximo_DPPH = max(DPPH), Promedio_Temperature = mean(Temperature), Maximo_Temperature = max(Temperature),Promedio_pH = mean(pH), Maximo_pH = max(pH), Promedio_Salinity = mean(Salinity), Maximo_Salinity = max(Salinity), Promedio_PAR = mean(PAR), Maximo_PAR = max(PAR))
+
+Datos_tab
 ```
+
+
 
 
 ```{r}
 Datos_tab2 <- Datos_Proyecto %>% group_by(time) %>% summarize(n = n(), 
 Promedio_Chla = mean(Chla), Maximo_Chla = max(Chla), Promedio_Chlc = mean(Chlc), Maximo_Chlc = max(Chlc), Promedio_Car = mean(Car), Maximo_Car = max(Car), Promedio_PC = mean(PC), Maximo_PC = max(PC), Promedio_DPPH = mean(DPPH), Maximo_DPPH = max(DPPH), Promedio_Temperature = mean(Temperature), Maximo_Temperature = max(Temperature),Promedio_pH = mean(pH), Maximo_pH = max(pH), Promedio_Salinity = mean(Salinity), Maximo_Salinity = max(Salinity), Promedio_PAR = mean(PAR), Maximo_PAR = max(PAR))
+
+Datos_tab2
 ```
 
 ## 8. Utiliza Paquetes para importar datos a R como readxl o similar y paquetes tidyr, dplyr, ggplot2
-
-## Habilita librerias 
-
-```{r}
-library(readxl)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
-```
 
 ```{r}
 Datos_Proyecto2 <- read_excel("Datos_Proyecto2.xlsx" , sheet= 1)
@@ -205,17 +153,7 @@ summary(Datos_Proyecto2)
 messy <- read_excel("Datos_Proyecto2.xlsx")
 summary(messy)
 ```
-```{r}
-Datos_Proyecto2_factor <- read_excel("Datos_Proyecto2.xlsx" , sheet= 2)
-Datos_Proyecto2_factor$Seasons <- as.factor(Datos_Proyecto2_factor$Seasons)
-Datos_Proyecto2_factor$time <- as.factor(Datos_Proyecto2_factor$time)
-Datos_Proyecto2_factor$Replicate <- as.factor(Datos_Proyecto2_factor$Replicate)
 
-inner_data <- inner_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
-right_data <- right_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
-full_data <- full_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
-
-```
 
 
 ```
