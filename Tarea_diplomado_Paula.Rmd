@@ -37,6 +37,8 @@ summary(Datos_Proyecto)
 ```{r}
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
+Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
+
 summary(Datos_Proyecto)
 ```
 
@@ -62,6 +64,7 @@ ggplot(Datos_Proyecto, aes(PAR)) + geom_histogram()+ labs(title="Histograma Radi
 str(Datos_Proyecto)
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
+Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
 summary(Datos_Proyecto)
 
 Datos_Proyecto$Chla
@@ -105,7 +108,7 @@ tablePAR
 
 ## 5. Relación entre variables cuantitativas y factores
 
-** No se incluiran las variables Seasons, time, porque son variables categóricas. 
+** No se incluiran las variables Seasons, time, y Replicate porque son variables categóricas. 
 
 ```{r}
 summary(Datos_Proyecto)
@@ -114,18 +117,18 @@ summary(Datos_Proyecto)
 ## 5. Graficas de correlación de variables continuas (pearson)
 
 ```{r}
-pairs.panels(Datos_Proyecto[,3:11], method = "pearson", hist.col = "blue", density = TRUE, font=4)
+pairs.panels(Datos_Proyecto[,4:12], method = "pearson", hist.col = "blue", density = TRUE, font=4)
 
 ```
-** Correlación entre las primeras 5 variables continuas 
+** Correlación entre las primeras 4 variables continuas 
 
 ```{r}
-pairs.panels(Datos_Proyecto[,3:7], method = "pearson", hist.col = "blue", density = TRUE, font=2)
+pairs.panels(Datos_Proyecto[,4:7], method = "pearson", hist.col = "blue", density = TRUE, font=2)
 ```
 ** Correlación entre las segundas 4 variables continuas 
 
 ```{r}
-pairs.panels(Datos_Proyecto[,8:11], method = "pearson", hist.col = "blue", density = TRUE, font=2)
+pairs.panels(Datos_Proyecto[,9:12], method = "pearson", hist.col = "blue", density = TRUE, font=2)
 ```
 
 ## 5. Relación entre variables continuas y factores (boxplot)
@@ -168,6 +171,7 @@ library(ggplot2)
 ```{r}
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
+Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
 summary(Datos_Proyecto)
 
 messy <- read_excel("Datos_Proyecto.xlsx")
