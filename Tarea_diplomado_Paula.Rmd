@@ -218,10 +218,6 @@ full_data <- full_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
 ```
 
 
-
-
-
-
 ```
 You can also embed plots, for example:
 
