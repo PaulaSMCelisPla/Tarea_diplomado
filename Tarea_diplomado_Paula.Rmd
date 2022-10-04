@@ -167,25 +167,55 @@ library(dplyr)
 library(ggplot2)
 ```
 
-
 ```{r}
+Datos_Proyecto <- read_excel("Datos_Proyecto.xlsx" , sheet= 1)
+head(Datos_Proyecto)
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
 Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
-summary(Datos_Proyecto)
 
-messy <- read_excel("Datos_Proyecto.xlsx")
-summary(messy)
+select(Datos_Proyecto, Chla, Chlc, Car, DPPH)
+
 ```
-
 ```{r}
 Datos_tab <- Datos_Proyecto %>% group_by(Seasons) %>% summarize(n = n(), 
 Promedio_Chla = mean(Chla), Maximo_Chla = max(Chla), Promedio_Chlc = mean(Chlc), Maximo_Chlc = max(Chlc), Promedio_Car = mean(Car), Maximo_Car = max(Car), Promedio_PC = mean(PC), Maximo_PC = max(PC), Promedio_DPPH = mean(DPPH), Maximo_DPPH = max(DPPH), Promedio_Temperature = mean(Temperature), Maximo_Temperature = max(Temperature),Promedio_pH = mean(pH), Maximo_pH = max(pH), Promedio_Salinity = mean(Salinity), Maximo_Salinity = max(Salinity), Promedio_PAR = mean(PAR), Maximo_PAR = max(PAR))
 ```
 
 
+```{r}
+Datos_tab2 <- Datos_Proyecto %>% group_by(time) %>% summarize(n = n(), 
+Promedio_Chla = mean(Chla), Maximo_Chla = max(Chla), Promedio_Chlc = mean(Chlc), Maximo_Chlc = max(Chlc), Promedio_Car = mean(Car), Maximo_Car = max(Car), Promedio_PC = mean(PC), Maximo_PC = max(PC), Promedio_DPPH = mean(DPPH), Maximo_DPPH = max(DPPH), Promedio_Temperature = mean(Temperature), Maximo_Temperature = max(Temperature),Promedio_pH = mean(pH), Maximo_pH = max(pH), Promedio_Salinity = mean(Salinity), Maximo_Salinity = max(Salinity), Promedio_PAR = mean(PAR), Maximo_PAR = max(PAR))
+```
 
+## 8. Utiliza Paquetes para importar datos a R como readxl o similar y paquetes tidyr, dplyr, ggplot2
 
+## Habilita librerias 
+
+```{r}
+library(readxl)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+Datos_Proyecto2 <- read_excel("Datos_Proyecto2.xlsx" , sheet= 1)
+summary(Datos_Proyecto2)
+messy <- read_excel("Datos_Proyecto2.xlsx")
+summary(messy)
+```
+```{r}
+Datos_Proyecto2_factor <- read_excel("Datos_Proyecto2.xlsx" , sheet= 2)
+Datos_Proyecto2_factor$Seasons <- as.factor(Datos_Proyecto2_factor$Seasons)
+Datos_Proyecto2_factor$time <- as.factor(Datos_Proyecto2_factor$time)
+Datos_Proyecto2_factor$Replicate <- as.factor(Datos_Proyecto2_factor$Replicate)
+
+inner_data <- inner_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
+right_data <- right_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
+full_data <- full_join(Datos_Proyecto2, Datos_Proyecto2_factor, "Sample_id")
+
+```
 
 
 
@@ -196,6 +226,7 @@ Promedio_Chla = mean(Chla), Maximo_Chla = max(Chla), Promedio_Chlc = mean(Chlc),
 You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
+
 plot(pressure)
 ```
 
