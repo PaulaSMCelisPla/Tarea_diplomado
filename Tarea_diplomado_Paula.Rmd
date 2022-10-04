@@ -7,6 +7,8 @@ output:
   html_document: default
 ---
 
+## Habilita Librerias 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(stats)
@@ -16,7 +18,6 @@ library(readxl)
 library(agridat)
 library(ggplot2)
 ```
-
 
 ## Summary
 
@@ -36,33 +37,11 @@ summary(Datos_Proyecto)
 ```{r}
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
-Datos_Proyecto$hours <- as.factor(Datos_Proyecto$hours)
-Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
 summary(Datos_Proyecto)
 ```
 
 ## Including Plots
 
-## 3. Histogramas
-
-```{r}
-ggplot(Datos_Proyecto, aes(Chla)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Chlc)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Car)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(PC)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(DPPH)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(C)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(N)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Ratio)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Nitrato)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Fosfato)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Temperature)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(pH)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(Salinity)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(PAR)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(UVA)) + geom_histogram()
-ggplot(Datos_Proyecto, aes(UVB)) + geom_histogram()
-```
 ## 3. Histogramas con etiquetas y títulos
 
 ```{r}
@@ -71,89 +50,62 @@ ggplot(Datos_Proyecto, aes(Chlc)) + geom_histogram()+ labs(title="Histograma Clo
 ggplot(Datos_Proyecto, aes(Car)) + geom_histogram()+ labs(title="Histograma Carotenos", x="Car", y="Frecuencia")
 ggplot(Datos_Proyecto, aes(PC)) + geom_histogram()+ labs(title="Histograma Compuestos fenólicos", x="PC", y="Frecuencia")
 ggplot(Datos_Proyecto, aes(DPPH)) + geom_histogram()+ labs(title="Histograma DPPH", x="DPPH", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(C)) + geom_histogram()+ labs(title="Histograma Carbono", x="C", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(N)) + geom_histogram()+ labs(title="Histograma Nitrogéno", x="N", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Ratio)) + geom_histogram()+ labs(title="Histograma Ratio C:N", x="Ratio", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Nitrato)) + geom_histogram()+ labs(title="Histograma Nitrato", x="Nitrato", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(Fosfato)) + geom_histogram()+ labs(title="Histograma Fosfato", x="Fosfato", y="Frecuencia")
 ggplot(Datos_Proyecto, aes(Temperature)) + geom_histogram()+ labs(title="Histograma Tempertura", x="Temperature", y="Frecuencia")
 ggplot(Datos_Proyecto, aes(pH)) + geom_histogram()+ labs(title="Histograma pH", x="pH", y="Frecuencia")
 ggplot(Datos_Proyecto, aes(Salinity)) + geom_histogram()+ labs(title="Histograma Salinity", x="Salinity", y="Frecuencia")
 ggplot(Datos_Proyecto, aes(PAR)) + geom_histogram()+ labs(title="Histograma Radiación fotosintéticamnete activa", x="PAR", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(UVA)) + geom_histogram()+ labs(title="Histograma Radiación UVA", x="UVA", y="Frecuencia")
-ggplot(Datos_Proyecto, aes(UVB)) + geom_histogram()+ labs(title="Histograma Radiación UVB", x="UVB", y="Frecuencia")
 ```
+
 ## 4. Datos balanceados y tablas de frecuencia
 
 ```{r}
-Datos_Proyecto$Chla <- Datos_Proyecto$Chla
-table(Datos_Proyecto$Chla)
-frec <- table(Datos_Proyecto$Chla)
+str(Datos_Proyecto)
+Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
+Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
+summary(Datos_Proyecto)
 
-Datos_Proyecto$Chlc <- Datos_Proyecto$Chlc
-table(Datos_Proyecto$Chlc)
-frec <- table(Datos_Proyecto$Chlc)
+Datos_Proyecto$Chla
+tableChla <-as.data.frame(table(Chla = Datos_Proyecto$Chla))
+tableChla
 
-Datos_Proyecto$Car <- Datos_Proyecto$Car
-table(Datos_Proyecto$Car)
-frec <- table(Datos_Proyecto$Car)
+Datos_Proyecto$Chlc
+tableChlc <-as.data.frame(table(Chlc = Datos_Proyecto$Chlc))
+tableChlc
 
-Datos_Proyecto$PC <- Datos_Proyecto$PC
-table(Datos_Proyecto$PC)
-frec <- table(Datos_Proyecto$PC)
+Datos_Proyecto$Car
+tableCar <-as.data.frame(table(Car = Datos_Proyecto$Car))
+tableCar
 
-Datos_Proyecto$DPPH <- Datos_Proyecto$DPPH
-table(Datos_Proyecto$DPPH)
-frec <- table(Datos_Proyecto$DPPH)
+Datos_Proyecto$PC
+tablePC <-as.data.frame(table(PC = Datos_Proyecto$PC))
+tablePC
 
-Datos_Proyecto$C <- Datos_Proyecto$C
-table(Datos_Proyecto$C)
-frec <- table(Datos_Proyecto$C)
+Datos_Proyecto$DPPH
+tableDPPH <-as.data.frame(table(DPPH = Datos_Proyecto$DPPH))
+tableDPPH
 
-Datos_Proyecto$N <- Datos_Proyecto$N
-table(Datos_Proyecto$N)
-frec <- table(Datos_Proyecto$N)
+Datos_Proyecto$Temperature
+tableTemp <-as.data.frame(table(Temperature = Datos_Proyecto$Temperature))
+tableTemp
 
-Datos_Proyecto$Ratio <- Datos_Proyecto$Ratio
-table(Datos_Proyecto$Ratio)
-frec <- table(Datos_Proyecto$Ratio)
+Datos_Proyecto$pH
+tablepH <-as.data.frame(table(pH = Datos_Proyecto$pH))
+tablepH
 
-Datos_Proyecto$Nitrato <- Datos_Proyecto$Nitrato
-table(Datos_Proyecto$Nitrato)
-frec <- table(Datos_Proyecto$Nitrato)
+Datos_Proyecto$Salinity
+tableSalinity <-as.data.frame(table(Salinity = Datos_Proyecto$Salinity))
+tableSalinity
 
-Datos_Proyecto$Fosfato <- Datos_Proyecto$Fosfato
-table(Datos_Proyecto$Fosfato)
-frec <- table(Datos_Proyecto$Fosfato)
+Datos_Proyecto$PAR
+tablePAR <-as.data.frame(table(PAR = Datos_Proyecto$PAR))
+tablePAR
 
-Datos_Proyecto$Temperature <- Datos_Proyecto$Temperature
-table(Datos_Proyecto$Temperature)
-frec <- table(Datos_Proyecto$Temperature)
-
-Datos_Proyecto$pH <- Datos_Proyecto$pH
-table(Datos_Proyecto$pH)
-frec <- table(Datos_Proyecto$pH)
-
-Datos_Proyecto$Salinity <- Datos_Proyecto$Salinity
-table(Datos_Proyecto$Salinity)
-frec <- table(Datos_Proyecto$Salinity)
-
-Datos_Proyecto$PAR <- Datos_Proyecto$PAR
-table(Datos_Proyecto$PAR)
-frec <- table(Datos_Proyecto$PAR)
-
-Datos_Proyecto$UVA <- Datos_Proyecto$UVA
-table(Datos_Proyecto$UVA)
-frec <- table(Datos_Proyecto$UVA)
-
-Datos_Proyecto$UVB <- Datos_Proyecto$UVB
-table(Datos_Proyecto$UVB)
-frec <- table(Datos_Proyecto$UVB)
 ```
+
 
 ## 5. Relación entre variables cuantitativas y factores
 
-** No se incluiran las variables Seasons, time, hours y Replicate, porque son variables categóricas. 
+** No se incluiran las variables Seasons, time, porque son variables categóricas. 
 
 ```{r}
 summary(Datos_Proyecto)
@@ -162,18 +114,18 @@ summary(Datos_Proyecto)
 ## 5. Graficas de correlación de variables continuas (pearson)
 
 ```{r}
-pairs.panels(Datos_Proyecto[,5:20], method = "pearson", hist.col = "blue", density = TRUE, font=4)
+pairs.panels(Datos_Proyecto[,3:11], method = "pearson", hist.col = "blue", density = TRUE, font=4)
 
 ```
-** Correlación entre las primeras 8 variables continuas 
+** Correlación entre las primeras 5 variables continuas 
 
 ```{r}
-pairs.panels(Datos_Proyecto[,5:12], method = "pearson", hist.col = "blue", density = TRUE, font=2)
+pairs.panels(Datos_Proyecto[,3:7], method = "pearson", hist.col = "blue", density = TRUE, font=2)
 ```
-** Correlación entre las segundas 8 variables continuas 
+** Correlación entre las segundas 4 variables continuas 
 
 ```{r}
-pairs.panels(Datos_Proyecto[,13:20], method = "pearson", hist.col = "blue", density = TRUE, font=2)
+pairs.panels(Datos_Proyecto[,8:11], method = "pearson", hist.col = "blue", density = TRUE, font=2)
 ```
 
 ## 5. Relación entre variables continuas y factores (boxplot)
@@ -184,18 +136,11 @@ ggplot(Datos_Proyecto, aes(x= Seasons, y=Chla))+geom_boxplot(fill="olivedrab1")+
 ggplot(Datos_Proyecto, aes(x= Seasons, y=Chlc))+geom_boxplot(fill="red")+labs(title = "BoxPlot", x= "Seasons", y= "Clorofila c")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=Car))+geom_boxplot(fill="blue")+labs(title = "BoxPlot", x= "Seasons", y= "Carotenos")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=PC))+geom_boxplot(fill="green")+labs(title = "BoxPlot", x= "Seasons", y= "Compuestos fenólicos")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=C))+geom_boxplot(fill="brown")+labs(title = "BoxPlot", x= "Seasons", y= "Carbono")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=N))+geom_boxplot(fill="yellow")+labs(title = "BoxPlot", x= "Seasons", y= "Nitrógeno")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=Ratio))+geom_boxplot(fill="purple")+labs(title = "BoxPlot", x= "Seasons", y= "Ratio C:N")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=Nitrato))+geom_boxplot(fill="olivedrab1")+labs(title = "BoxPlot", x= "Seasons", y= "Nitrato")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=Fosfato))+geom_boxplot(fill="red")+labs(title = "BoxPlot", x= "Seasons", y= "Fosfato")
+ggplot(Datos_Proyecto, aes(x= Seasons, y=DPPH))+geom_boxplot(fill="brown")+labs(title = "BoxPlot", x= "Seasons", y= "DPPH")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=Temperature))+geom_boxplot(fill="blue")+labs(title = "BoxPlot", x= "Seasons", y= "Temperatura")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=pH))+geom_boxplot(fill="green")+labs(title = "BoxPlot", x= "Seasons", y= "pH")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=Salinity))+geom_boxplot(fill="brown")+labs(title = "BoxPlot", x= "Seasons", y= "Salinity")
 ggplot(Datos_Proyecto, aes(x= Seasons, y=PAR))+geom_boxplot(fill="yellow")+labs(title = "BoxPlot", x= "Seasons", y= "Radiación PAR")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=UVA))+geom_boxplot(fill="purple")+labs(title = "BoxPlot", x= "Seasons", y= "Radiación UVA")
-ggplot(Datos_Proyecto, aes(x= Seasons, y=UVB))+geom_boxplot(fill="olivedrab1")+labs(title = "BoxPlot", x= "Seasons", y= "Radiación UVB")
-
 ```
 
 ## 6. Identificación de outliers o error atípico 
@@ -203,29 +148,38 @@ ggplot(Datos_Proyecto, aes(x= Seasons, y=UVB))+geom_boxplot(fill="olivedrab1")+l
 Variable Chlc : para la estación winter se registra un outlier
 Variable Car : para la estación summer se registra un outlier
 Variable PC : se registran 2 valores en Spring
-Variable C : se registra un valor en spring y winter, y 2 valores en summer 
-Variable N: 4 valores en Autumn y 1 en winter
-Variable Ratio: 1 valor en autumn 
-Variable Nitrato: 1 valor en autumn 
-Variable Fosfato: 3 valores en spring 
 Variable Temperature: 3 valores en spring 
 Variable pH : 5 valores en spring 
 Variable Salinity: 3 valores en spring, 2 en summer y 1 en winter
 Variable PAR: 1 en autumn, 1 en spring y 1 en summer 
-Variable UVA: 1 summer 
-Variable UVB: 1 en autumn 
 
 ## 7. Resumen de los datos con tablas y estadística descriptiva 
 
+## Habilita librerias 
+
 ```{r}
-str(Datos_Proyecto)
+library(readxl)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+
+```{r}
 Datos_Proyecto$Seasons <- as.factor(Datos_Proyecto$Seasons)
 Datos_Proyecto$time <- as.factor(Datos_Proyecto$time)
-Datos_Proyecto$hours <- as.factor(Datos_Proyecto$hours)
-Datos_Proyecto$Replicate <- as.factor(Datos_Proyecto$Replicate)
+summary(Datos_Proyecto)
 
-table(Datos_Proyecto$Seasons, Datos_Proyecto$time, Datos_Proyecto$hours, Datos_Proyecto$Replicate, Datos_Proyecto$Chla)
+messy <- read_excel("Datos_Proyecto.xlsx")
+summary(messy)
 ```
+
+```{r}
+Datos_tab <- Datos_Proyecto %>% group_by(Seasons) %>% summarize(n = n(), 
+Promedio_Chla = mean(Chla), Maximo_Chla = max(Chla), Promedio_Chlc = mean(Chlc), Maximo_Chlc = max(Chlc), Promedio_Car = mean(Car), Maximo_Car = max(Car), Promedio_PC = mean(PC), Maximo_PC = max(PC), Promedio_DPPH = mean(DPPH), Maximo_DPPH = max(DPPH), Promedio_Temperature = mean(Temperature), Maximo_Temperature = max(Temperature),Promedio_pH = mean(pH), Maximo_pH = max(pH), Promedio_Salinity = mean(Salinity), Maximo_Salinity = max(Salinity), Promedio_PAR = mean(PAR), Maximo_PAR = max(PAR))
+```
+
+
 
 
 
