@@ -488,8 +488,9 @@ gridExtra::grid.arrange(p1, p2, p3, p4, p5, ncol = 2)</code></pre>
 ##  $ pH         : num [1:108] 7.84 7.84 7.84 7.85 7.85 7.85 7.88 7.88 7.88 7.84 ...
 ##  $ Salinity   : num [1:108] 33.7 33.7 33.7 17.9 17.9 ...
 ##  $ PAR        : num [1:108] 594 594 594 1563 1563 ...</code></pre>
-<pre class="r"><code>knitr::kable(table(Datos_Proyecto$Seasons, Datos_Proyecto$time))</code></pre>
+<pre class="r"><code>knitr::kable(table(Datos_Proyecto$Seasons, Datos_Proyecto$time), caption = &quot;Tabla de contingencia&quot;)</code></pre>
 <table>
+<caption>Tabla de contingencia</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>

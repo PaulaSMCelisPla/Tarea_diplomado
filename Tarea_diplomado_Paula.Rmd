@@ -65,9 +65,9 @@ gridExtra::grid.arrange(p6, p7, p8, p9, ncol = 2)
 ```{r}
 str(Datos_Proyecto)
 
-knitr::kable(table(Datos_Proyecto$Seasons, Datos_Proyecto$time))
-```
+knitr::kable(table(Datos_Proyecto$Seasons, Datos_Proyecto$time), caption = "Tabla de contingencia")
 
+```
 
 ## 5. Relación entre variables cuantitativas y factores
 
